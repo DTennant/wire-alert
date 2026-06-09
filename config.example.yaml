@@ -1,0 +1,59 @@
+# wire-alert configuration
+
+filters:
+  # Maximum market cap to trigger alert (USD)
+  max_market_cap: 50_000_000
+  
+  # Minimum market cap (filter out sub-penny trash)
+  min_market_cap: 1_000_000
+  
+  # Theme keywords - alert if headline contains any of these
+  keywords:
+    - quantum
+    - AI
+    - artificial intelligence
+    - semiconductor
+    - lunar
+    - moon
+    - space
+    - FDA
+    - defense
+    - contract
+    - partnership
+    - acquisition
+    - strategic alternative
+    - nuclear
+    - fusion
+    - drone
+    - autonomous
+    - blockchain
+    - bitcoin
+  
+  # Volume spike ratio vs 30-day average
+  min_volume_ratio: 2.0
+  
+  # Filing types to monitor on EDGAR
+  edgar_form_types:
+    - "8-K"
+    - "8-K/A"
+
+alerts:
+  # Slack incoming webhook URL
+  slack_webhook: ""
+  
+  # Discord webhook URL  
+  discord_webhook: ""
+  
+  # Print to terminal
+  terminal: true
+
+polling:
+  # How often to poll EDGAR (seconds) - max 10 req/s
+  edgar_interval_seconds: 5
+  
+  # How often to poll RSS feeds (seconds)
+  rss_interval_seconds: 30
+
+# SEC EDGAR requires a User-Agent with name and email
+edgar:
+  user_agent: "YourName your@email.com"
