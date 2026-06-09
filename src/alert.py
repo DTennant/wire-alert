@@ -59,7 +59,8 @@ class AlertDispatcher:
 {enrichment}
 🔗 {url}"""
         
-        style = "bold red" if alert.get("enrichment", {}).get("market_cap", float("inf")) < 10_000_000 else "bold yellow"
+        mcap = (alert.get("enrichment") or {}).get("market_cap", float("inf"))
+        style = "bold red" if mcap < 10_000_000 else "bold yellow"
         console.print(Panel(body, title=title, border_style=style))
     
     def _send_slack(self, alert: dict):
